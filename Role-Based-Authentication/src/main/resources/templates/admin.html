@@ -1,0 +1,32 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About</title>
+    </head>
+
+    <body>
+        <section style="margin:0% 0% 0% 36%;">
+
+            <div class="card mt-1" style="width: 22rem;">
+                <div class="card-body">
+                    <h1 class="text-center">Admin Profile</h1>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item fw-bold">[[${employee.name}]]</li>
+                        <li class="list-group-item">[[${employee.email}]]</li>
+                        <li class="list-group-item">[[${employee.mobileNo}]]</li>
+                        <li class="list-group-item">[[${employee.role}]]</li>
+                    </ul>
+
+                    <div class="text-center">
+                        <a href="/logout" class="btn btn-outline-success w-100">Logout</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </body>
+
+</html>

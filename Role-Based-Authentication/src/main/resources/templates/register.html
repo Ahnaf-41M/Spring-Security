@@ -1,0 +1,86 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="/src/main/resources/static/register.css">
+        <title>Registration Page</title>
+    </head>
+
+    <body>
+        <section class="vh-100 bg-image"
+            style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+            <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+                <div class="container h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-5">
+                            <div class=" card" style="border-radius: 15px;">
+                                <div class="card-body p-5">
+                                    <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+                                    <form th:object="${employee}" action="/saveEmp" method="post">
+
+                                        <div class="form-outline mb-2">
+                                            <label class="form-label">Your Name</label>
+                                            <input type="text" th:field="${employee.name}"
+                                                class="form-control form-control-md" />
+
+                                        </div>
+
+                                        <div class="form-outline mb-2">
+                                            <label class="form-label">Your Email</label>
+                                            <input type="email" th:field="${employee.email}"
+                                                class="form-control form-control-md" />
+
+                                        </div>
+
+                                        <div class="form-outline mb-2">
+                                            <label class="form-label">Your Mobile Number</label>
+                                            <input type="number" th:field="${employee.mobileNo}"
+                                                class="form-control form-control-md" />
+
+                                        </div>
+                                        <div class="form-outline mb-2">
+                                            <label class="form-label">Password</label>
+                                            <input type="password" th:field="${employee.password}"
+                                                class="form-control form-control-md" />
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label">Role</label>
+                                            <input type="text" th:field="${employee.role}"
+                                                class="form-control form-control-md" />
+                                        </div>
+
+                                        <p class="text-success text-center fs-5 fw-semibold"
+                                            th:if="${session.msg}=='Registered Successfully!'">
+                                            [[${session.msg}]]
+                                        </p>
+                                        <p class="text-danger text-center fs-5 fw-semibold"
+                                            th:if="${session.msg}=='User email exists!'">
+                                            [[${session.msg}]]
+                                        </p>
+
+                                        <p th:text="${@employeeServiceImpl.removeSessionMessage()}"></p>
+
+                                        <div class="d-flex justify-content-center">
+                                            <button type="submit"
+                                                class="btn btn-success btn-block w-100">Register</button>
+                                        </div>
+
+                                        <!-- <p class="text-center text-muted mt-5 mb-0">Have already an account? <a
+                                                href="#!" class="fw-bold text-body"><u>Login here</u></a></p> -->
+
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+
+</html>
